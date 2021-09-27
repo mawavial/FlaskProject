@@ -2,6 +2,7 @@ from flask import (Flask, jsonify, request)
 
 drivers_json = [
     {
+        'id': '1',
         'first_name': 'ayrton',
         'last_name': 'senna',
         'drivers_license': '123124',
@@ -9,6 +10,7 @@ drivers_json = [
         'driver_since': '1999'
     },
     {
+        'id': '2',
         'first_name': 'ayrton',
         'last_name': 'senna',
         'drivers_license': '123124',
@@ -16,6 +18,7 @@ drivers_json = [
         'driver_since': '1999'
     },
     {
+        'id': '3',
         'first_name': 'ayrton',
         'last_name': 'senna',
         'drivers_license': '123124',

@@ -39,40 +39,38 @@ def list_trucks():
     return jsonify()
 
 
-def get_truck_by_id(book_id):
+def get_truck_by_id(truck_id):
     """
-    book --> a single book
+    trucks --> get a single truck by id
     Args:
-        book_id(int):
+        truck_id(int):
     Return:
-        books(dict): a book
+        trucks(dict): a single truck
     """
-    for book in books:
-        if book["id"] == int(book_id):
-            return jsonify(books)
+    for truck in trucks_json:
+        if truck["id"] == int(truck_id):
+            return jsonify(truck)
     return jsonify(None)
 
 
-def save_truck():
+def save_truck(truck):
     """
     book --> a single book
     Args:
-        book_id(int):
+        truck(truck):
     Return:
-        books(dict): a book
+        truck(dict): the created truck
     """
-    book_json = request.json
-    books.append(book_json)
+    truck_to_save = truck.json
+    trucks_json.append(truck_to_save)
     return jsonify({"message": "The object was saved successfully"})
 
 
-def delete_truck():
+def delete_truck(truck_id):
     """
     book --> a single book
     Args:
-        book_id(int):
-    Return:
-        books(dict): a book
+        truck_id(int):
     """
     book_json = request.json
     books.append(book_json)

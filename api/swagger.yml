@@ -1,0 +1,259 @@
+swagger: "2.0"
+info:
+  description: "This is a logistics application which has CRUD operations for drivers, users, trucks and clients"
+  version: "1.0.0"
+  title: "Crazy Driver API"
+  termsOfService: "To be continued"
+  contact:
+    email: "mawavial@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:4500"
+basePath: "/api/v1"
+tags:
+- name: "driver"
+  description: "Everything about our Drivers"
+- name: "Trucks"
+  description: "Everything about our Trucks"
+schemes:
+- "https"
+- "http"
+paths:
+  /driver/save_driver:
+    post:
+      tags:
+      - "driver"
+      summary: "Add a new driver"
+      description: "Adds a new driver into the database"
+      operationId: "addDriver"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Driver object that will be created"
+        required: true
+        schema:
+          $ref: "#/definitions/Driver"
+      responses:
+        "405":
+          description: "Invalid input"
+  /driver/update_driver:
+    put:
+      tags:
+      - "driver"
+      summary: "Update an existing driver"
+      description: ""
+      operationId: "updateDriver"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Update an already existing driver"
+        required: true
+        schema:
+          $ref: "#/definitions/Driver"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Pet not found"
+        "405":
+          description: "Validation exception"
+  /driver/get_by_id/{driver_id}:
+    get:
+      tags:
+      - "driver"
+      summary: "Find driver by ID"
+      description: "Returns a single driver"
+      operationId: "getDriverById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "driver_id"
+        in: "path"
+        description: "ID of driver to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Driver"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Driver not found"
+  /driver/delete/{driver_id}:
+    delete:
+      tags:
+      - "driver"
+      summary: "Deletes a driver"
+      description: ""
+      operationId: "deleteDriverById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "driver_id"
+        in: "path"
+        description: "Driver id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Pet not found"
+  /truck/save_driver:
+    post:
+      tags:
+      - "truck"
+      summary: "Add a new driver"
+      description: "Adds a new truck into the database"
+      operationId: "addTruck"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Truck object that will be created"
+        required: true
+        schema:
+          $ref: "#/definitions/Truck"
+      responses:
+        "405":
+          description: "Invalid input"
+  /truck/update_truck :
+    put:
+      tags:
+      - "truck"
+      summary: "Update an existing driver"
+      description: ""
+      operationId: "updateTruck"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Update an already existing truck"
+        required: true
+        schema:
+          $ref: "#/definitions/Truck"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "405":
+          description: "Validation exception"
+  /truck/get_by_id/{truck_id}:
+    get:
+      tags:
+      - "truck"
+      summary: "Find truck by ID"
+      description: "Returns a single truck"
+      operationId: "getTruckById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "truck_id"
+        in: "path"
+        description: "ID of truck to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Truck"
+        "400":
+          description: "Invalid ID supplied"
+  /truck/delete/{truck_id}:
+    delete:
+      tags:
+      - "truck"
+      summary: "Deletes a truck"
+      description: ""
+      operationId: "deleteTruckById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "truck_id"
+        in: "path"
+        description: "Truck id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+definitions:
+  Driver:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      first_name:
+        type: "string"
+      last_name:
+        type: "string"
+      drivers_license:
+        type: "string"
+      age:
+        type: "integer"
+        format: "int64"
+      driver_since:
+        type: "string"
+        format: "date-time"
+      status:
+        type: "string"
+    xml:
+      name: "Driver"
+  Truck:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      model:
+        type: "string"
+      plate:
+        type: "string"
+      chassis:
+        type: "string"
+      manufacturer:
+        type: "string"
+      year:
+        type: "string"
+      mileage:
+        type: "string"
+    xml:
+      name: "Truck"
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
