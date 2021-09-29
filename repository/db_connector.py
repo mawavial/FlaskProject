@@ -19,11 +19,19 @@ class DBConnector:
 
 
     def get_connection(self):
-        if self.connection:
-            return self.connection
+        try:
+            if hasattr(self, 'connection') and self.connection:
+                return self.connection
+            else:
+                self.connection = redis.Redis(host="localhost",
+                                              port=6379)
+        except (TimeoutError, ConnectionError) as timeout_e:
+            raise Exception("The DB is not available",
+                            custom_param="string")
         else:
-            return self.connection(host="localhost",
-                                   port=6379)
+            return self.connection
+        finally:
+            print("finally")
 
     def save(self, id_save, object_to_save):
         encoded_data = json.dumps(object_to_save)
