@@ -2,6 +2,7 @@ import json
 import pytest
 from repository.db_connector import DBConnector
 
+
 @pytest.fixture()
 def fixture_db_connector(mocker):
     object_to_save = {"123": {"a":"a"}}
