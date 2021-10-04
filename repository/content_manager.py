@@ -14,7 +14,7 @@ class ContentManager(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def get_all(self):
+    def get_all_documents(self):
         pass
 
     @abstractmethod

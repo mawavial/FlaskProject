@@ -1,7 +1,0 @@
-setup.py
-test/test_client.py
-test/test_mock.py
-truck_logistic_delivery.egg-info/PKG-INFO
-truck_logistic_delivery.egg-info/SOURCES.txt
-truck_logistic_delivery.egg-info/dependency_links.txt
-truck_logistic_delivery.egg-info/top_level.txt

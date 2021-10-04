@@ -40,7 +40,7 @@ def list_drivers():
     Return:
         drivers(dict): drivers
     """
-    return jsonify()
+    return jsonify(drivers_json)
 
 
 def get_driver_by_id(driver_id):

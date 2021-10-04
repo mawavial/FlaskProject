@@ -27,7 +27,6 @@ trucks_json = [
 ]
 
 
-
 def list_trucks():
     """
     list_trucks --> list all the books
@@ -36,7 +35,7 @@ def list_trucks():
     Return:
         books(dict): books
     """
-    return jsonify()
+    return jsonify(trucks_json)
 
 
 def get_truck_by_id(truck_id):

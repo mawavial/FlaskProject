@@ -1,7 +1,7 @@
 import pytest
 from repository.client_manager import ClientManager
 from repository.db_connector import DBConnector
-from models.client import Client
+from models.client_model import Client
 
 @pytest.fixture
 def db_connector():
